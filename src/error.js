@@ -1,4 +1,13 @@
+/**
+ * @class PidifyError
+ */
 class PidifyError {
+    /**
+     * @param {string} url 
+     * @param {object} error 
+     * @private
+     * @ignore
+     */
     constructor(url, error) {
         this.url = url;
         this.error = error;
@@ -9,14 +18,20 @@ class PidifyError {
             status: 500,
             statusText: "An error occurred"
         }
-
-        console.log(this.error)
     }
 
+    /**
+     * Get the error message
+     * @returns {string|json}
+     */
     getErrorMessage() {
         return this.error_response.data
     }
 
+    /**
+     * Return the status object containing both status and statusText
+     * @returns {object}
+     */
     getErrorStatus() {
         return {
             status: this.error_response.status,

@@ -3,6 +3,9 @@ const PidifyError = require('./error');
 const Manager = require('./manager');
 const BASE_URL = 'https://pidifier.herokuapp.com';
 
+/**
+ * @class PidifierJS
+ */
 class PidifierJS {
     /**
      * The class constructor
@@ -10,6 +13,14 @@ class PidifierJS {
      */
     constructor() {}
 
+    /**
+     * Run pidification on the provided URL
+     * @param {string} url The URL to pidify
+     * 
+     * @method
+     * @returns {Manager}
+     * @throws {PidifyError}
+     */
     async pidify(url) {
         return await axios
             .post(`${BASE_URL}/api/pdf/base64`, {
