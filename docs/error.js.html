@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>@youngmayor's PidifyJS: Source: error.js</title>
+
+        <script src="scripts/prettify/prettify.js"></script>
+        <script src="scripts/prettify/lang-css.js"></script>
+        <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+        <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    </head>
+
+    <body>
+
+        <div id="main">
+
+            <h1 class="page-title">Source: error.js</h1>
+
+            
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @class PidifyError
+ */
+class PidifyError {
+    /**
+     * @param {string} url 
+     * @param {object} error 
+     * @private
+     * @ignore
+     */
+    constructor(url, error) {
+        this.url = url;
+        this.error = error;
+        this.success = false
+
+        this.error_response = error.response ? error.response : {
+            data: 'Pidification failed',
+            status: 500,
+            statusText: "An error occurred"
+        }
+    }
+
+    /**
+     * Get the error message
+     * @returns {string|json}
+     */
+    getErrorMessage() {
+        return this.error_response.data
+    }
+
+    /**
+     * Return the status object containing both status and statusText
+     * @returns {object}
+     */
+    getErrorStatus() {
+        return {
+            status: this.error_response.status,
+            statusText: this.error_response.statusText
+        }
+    }
+
+}
+
+module.exports = PidifyError</code></pre>
+        </article>
+    </section>
+
+
+
+
+        </div>
+
+        <nav>
+            <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Manager.html">Manager</a></li><li><a href="PidifierJS.html">PidifierJS</a></li><li><a href="PidifyError.html">PidifyError</a></li></ul>
+        </nav>
+
+        <br class="clear">
+
+        <footer>
+            Author: <a href="https://youngmayor.dev">Meyoron Aghogho (YoungMayor)</a>
+            <br/>
+            <a href="./pidifier.min.js" download="pidifier.min.js">Download PidifyJS Here</a>
+        </footer>
+
+        <script>
+            prettyPrint();
+        </script>
+        <script src="scripts/linenumber.js"></script>
+    </body>
+</html>

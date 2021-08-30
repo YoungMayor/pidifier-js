@@ -22,7 +22,7 @@
         "version:build": "npm run tempbuild",
         "version:docs": "jsdoc --readme ./readme.md --package ./package.json -c jsdoc.json",
         "postversion": "rimraf dist/tmp/ && npm run doc && npm run build",
-        "tempbuild": "rimraf dist/tmp/ && webpack --output-filename tmp/pidifier.js.min.js"
+        "tempbuild": "rimraf dist/tmp/ && webpack --output-filename tmp/pidifier.min.js"
     },
     "keywords": [
         "node",
