@@ -1,17 +1,17 @@
 {
-    "name": "@youngmayor/package-tmpl",
+    "name": "@youngmayor/pidifier.js",
     "version": "1.0.0",
-    "description": "A template for packages",
+    "description": "The official Node Package for pidifier",
     "main": "./src/index.js",
-    "jsdelivr": "dist/template.min.js",
-    "unpkg": "dist/template.min.js",
+    "jsdelivr": "dist/pidifier.min.js",
+    "unpkg": "dist/pidifier.min.js",
     "scripts": {
-        "pretest": "browserify ./src/index.js --standalone Template | uglifyjs -cm > example/index.js",
+        "pretest": "browserify ./src/index.js --standalone PidifierJS | uglifyjs -cm > example/index.js",
         "test": "echo \"Error: no test specified\"",
         "prebuild": "rimraf dist",
         "build": "npm-run-all --parallel build:*",
-        "build:umd": "webpack --output-filename template.js",
-        "build:min": "webpack --output-filename template.min.js",
+        "build:umd": "webpack --output-filename pidifier.js",
+        "build:min": "webpack --output-filename pidifier.min.js",
         "predoc": "",
         "doc": "npm-run-all doc:*",
         "doc:build": "npm run tempbuild",
@@ -22,22 +22,26 @@
         "version:build": "npm run tempbuild",
         "version:docs": "jsdoc --readme ./readme.md --package ./package.json -c jsdoc.json",
         "postversion": "rimraf dist/tmp/ && npm run doc && npm run build",
-        "tempbuild": "rimraf dist/tmp/ && webpack --output-filename tmp/template.min.js"
+        "tempbuild": "rimraf dist/tmp/ && webpack --output-filename tmp/pidifier.js.min.js"
     },
     "keywords": [
         "node",
         "package",
-        "npm",
-        "template"
+        "pidifier",
+        "wrapper",
+        "pdf"
     ],
     "author": "Meyoron Aghogho <youngmayor08@gmail.com> (https://youngmayor.dev)",
     "repository": {
         "type": "git",
-        "url": "https://github.com/YoungMayor/package-tmpl.git"
+        "url": "https://github.com/YoungMayor/pidifier.js.git"
     },
     "license": "ISC",
-    "homepage": "https://youngmayor.github.io/package-tmpl",
-    "dependencies": {},
+    "homepage": "https://youngmayor.github.io/pidifier.js",
+    "dependencies": {
+        "@youngmayor/base64": "^1.0.2",
+        "axios": "^0.21.1"
+    },
     "devDependencies": {
         "babel-loader": "^8.2.2",
         "babel-register": "^6.26.0",

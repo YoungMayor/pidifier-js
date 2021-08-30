@@ -1,22 +1,25 @@
-class Template {
+const axios = require('axios');
+const PidifyError = require('./error');
+const Manager = require('./manager');
+const BASE_URL = 'https://pidifier.herokuapp.com';
+
+class PidifierJS {
     /**
      * The class constructor
      * @constructor
      */
-    constructor() {
-        console.log('Instantiated');
-        return 'Instantiated';
-    }
+    constructor() {}
 
-    /**
-     * A test method
-     * @param {any} param Any parameter
-     * @returns param
-     */
-    test(param) {
-        console.log('Template', param);
-        return param;
+    async pidify(url) {
+        return await axios
+            .post(`${BASE_URL}/api/pdf/base64`, {
+                url
+            }).then((res) => {
+                return new Manager(url, res.data)
+            }).catch((err) => {
+                return new PidifyError(url, err)
+            });
     }
 }
 
-module.exports = Template
+module.exports = PidifierJS
