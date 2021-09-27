@@ -1,12 +1,7 @@
-const Base64 = require("@youngmayor/base64")
-
-/**
- * @class Manager
- */
 class Manager {
     /**
-     * @param {string} url 
-     * @param {string} base64 
+     * @param {string} url
+     * @param {string} base64
      * @private
      * @ignore
      */
@@ -14,12 +9,10 @@ class Manager {
         this.url = url;
         this.base64 = base64;
         this.success = true
-
-        this.manager = Base64.managePDF(base64);
     }
 
     /**
-     * Get the base64 encoding of the PDF 
+     * Get the base64 encoding of the PDF
      * @returns {string}
      */
     getBase64() {
@@ -43,11 +36,11 @@ class Manager {
     }
 
     /**
-     * Download the PDF 
+     * Download the PDF
      * @param {string} filename What to save the download as
      * @returns {null}
      */
-    download(filename = `Pidification of ${this.url}.pdf`) {
+    download(filename = `Download of ${this.url}`) {
         return this.manager.download(filename)
     }
 }

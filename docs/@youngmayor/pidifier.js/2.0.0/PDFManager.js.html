@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>@youngmayor's PidifyJS: Source: error.js</title>
+        <title>@youngmayor's PidifyJS: Source: PDFManager.js</title>
 
         <script src="scripts/prettify/prettify.js"></script>
         <script src="scripts/prettify/lang-css.js"></script>
@@ -17,7 +17,7 @@
 
         <div id="main">
 
-            <h1 class="page-title">Source: error.js</h1>
+            <h1 class="page-title">Source: PDFManager.js</h1>
 
             
 
@@ -26,50 +26,38 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @class PidifyError
+            <pre class="prettyprint source linenums"><code>const Base64 = require("@youngmayor/base64");
+const Manager = require("./manager");
+
+/**
+ * @class PDFManager
+ * @extends {Manager}
  */
-class PidifyError {
+class PDFManager extends Manager {
     /**
-     * @param {string} url 
-     * @param {object} error 
+     * @param {string} url
+     * @param {string} base64
      * @private
      * @ignore
      */
-    constructor(url, error) {
-        this.url = url;
-        this.error = error;
-        this.success = false
+    constructor(url, base64) {
+        super(url, base64)
 
-        this.error_response = error.response ? error.response : {
-            data: 'Pidification failed',
-            status: 500,
-            statusText: "An error occurred"
-        }
+        this.manager = Base64.managePDF(base64)
     }
 
     /**
-     * Get the error message
-     * @returns {string|json}
+     * Download the PDF
+     * @param {string} filename What to save the download as
+     * @returns {null}
      */
-    getErrorMessage() {
-        return this.error_response.data
+    download(filename = `Pidification of ${this.url}.pdf`) {
+        return this.manager.download(filename)
     }
-
-    /**
-     * Return the status object containing both status and statusText
-     * @returns {object}
-     */
-    getErrorStatus() {
-        return {
-            status: this.error_response.status,
-            statusText: this.error_response.statusText
-        }
-    }
-
 }
 
-module.exports = PidifyError</code></pre>
+module.exports = PDFManager
+</code></pre>
         </article>
     </section>
 

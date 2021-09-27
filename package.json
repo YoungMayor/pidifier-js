@@ -1,6 +1,6 @@
 {
     "name": "@youngmayor/pidifier.js",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "The official Node Package for pidifier",
     "main": "./src/index.js",
     "jsdelivr": "dist/pidifier.min.js",

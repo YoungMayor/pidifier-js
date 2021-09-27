@@ -9,7 +9,7 @@
 <!-- [![gitter chat](https://img.shields.io/gitter/room/mzabriskie/axios.svg?style=flat-square)](https://gitter.im/mzabriskie/axios) -->
 <!-- [![code helpers](https://www.codetriage.com/axios/axios/badges/users.svg)](https://www.codetriage.com/axios/axios) -->
 
-The official Node Package for pidifier
+The official Node Package for pidifier v2
 
 ## Table of Contents
   - [Features](#features)
@@ -23,6 +23,7 @@ The official Node Package for pidifier
 
 ## Features
 - Interact with the Pidifier API easily
+- With a unified UI for pidifying a page, screenshotting page - full and preview (800px x 600px)
 
 
 ## Browser Support
@@ -91,14 +92,22 @@ ___
 PidifyJS can be easily used to convert a web page to PDF as shown below. 
 
 ```js
-// Create PidifyJS instance 
-const Pidifier = new PidifyJS();
+const url = 'https://example.com'
 
 // pidify a page
-const demoSitePDF = await PidifierJS.pidify('https://example.com');
+const demoSitePDF = await PidifyJS.pidify(url);
+
+// screenshot a page 
+const demoSiteScreenshot = await PidifyJS.screenshot(url);
+
+// preview-screenshot a page 
+const demoSitePreview = await PidifyJS.preview(url);
 
 
 // check if pidification was successful and perform actions
+// NOTE! All of the below methods are available to every method of pidification
+// But demoSitePDF was used
+
 if (demoSitePDF->success) {
     // ... Pidification was successful
     const demoSiteBase64 = demoSitePDF->getBase64();  // get the base64 encoding of the PDF
